@@ -7,6 +7,10 @@
 -  commit as you get things done : `git commit -m <your message here>`
 -  when ready to push : `git push origin <branch-name>`
 
+## running
+- do `cd ./frontend`
+- then `npm start`
+
 ## Models
 
 - Task
