@@ -5,7 +5,7 @@
 - create a new branch 
 - add your changes `git add .`
 -  commit as you get things done : `git commit -m <your message here>`
--  when ready to push : `git push origin <branch-name>
+-  when ready to push : `git push origin <branch-name>`
 
 ## Models
 
