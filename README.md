@@ -28,7 +28,7 @@
    - *phone_number* : required phone number of the the user
    - *preferred_com_mode*: the mode of communication that the user prefers
    - *subjects* : the subjects that the user is taking this term
-   - *partner* : a ref to a user, the study partner of this user
+   - *partners* : a ref to a user, the study partner of this user
 
 
 
