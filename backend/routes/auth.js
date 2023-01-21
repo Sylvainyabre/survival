@@ -11,12 +11,13 @@ const dotenv = require("dotenv");
 //const   = require("../middleware/auth");
 
 //Loading environment variables
-dotenv.config({ path: "./configs/config.env" });
+dotenv.config({ path: "./configs/config.env" }); 
 
 //desc Sign user up
 //@access:Public
 //route:POST api/auth/register
 router.post("/register", async (req, res) => {
+    console.log(res)
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
   const avatar = gravatar.url(req.body.email, {
@@ -96,7 +97,6 @@ router.post("/login", async (req, res) => {
           }
         );
       } else {
-        errors.password = "Password incorrect.";
 
         return res
           .status(404)
@@ -111,15 +111,14 @@ router.post("/login", async (req, res) => {
 //Log user out
 //POST api/auth/logout
 //access:Private
-router.post("/logout", (req, res) => {
+router.delete("/logout", (req, res) => {
   try {
     req.logOut();
     return res.json({ success: true, message: "Logged out successfully!" });
   } catch (error) {
     return res.json({ success: false, message: error.message });
   }
-  req.logOut();
-  res.redirect("/login");
+
 });
 
 //get current user

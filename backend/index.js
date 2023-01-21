@@ -17,7 +17,7 @@ initializePassport(passport)
 app.use(cors());
 app.options(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false })); 
 
 //Loading the config file
 dotenv.config({ path: "./configs/config.env" });
@@ -37,6 +37,7 @@ if (process.env.NODE_ENV === "development") {
 
 //Routes
 app.use("/api", require("./routes/index"));
+app.use("/api/auth", require("./routes/auth"));
 
 const PORT = process.env.PORT || 8000;
 

@@ -37,7 +37,6 @@ const UserSchema = new mongoose.Schema({
     subjects:[
       {
         type:String,
-        required:true
       }
     ],
     tasks:[
