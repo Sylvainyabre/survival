@@ -4,7 +4,7 @@
 - `git clone https://github.com/Sylvainyabre/survival.git`
 - create a new branch 
 - add your changes `git add .`
--  commit as you get things done : `git commit -m <your message here>
+-  commit as you get things done : `git commit -m <your message here>`
 -  when ready to push : `git push origin <branch-name>
 
 ## Models
