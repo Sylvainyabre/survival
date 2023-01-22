@@ -8,7 +8,11 @@ import Tasks from "./components/tasks/Tasks";
 import Homepage from "./components/home/Homepage";
 import TaskUpdate from "./components/tasks/TaskUpdate";
 import TaskCreate from "./components/tasks/TaskCreate";
-
+import PrivateRoute from "./PrivateRoute";
+import { Spinner } from 'flowbite-react';
+import {Suspense,createContext} from "react";
+import jwt_decode from "jwt-decode";
+import Live from "./components/tasks/Live";
 
 const font = "font-family: 'Lato', sans-serif";
 
@@ -37,18 +41,35 @@ const theme = createTheme({
   },
 });
 
+//check if token exists and set the current User to it
+const token = localStorage.getItem("jwtToken");
+//console.log("Saved "+ saved_courses)
+if (token) {
+
+  const decoded = jwt_decode(token);
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    
+    window.location.href = "/login";
+  }
+}
+
 function App() {
  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Routes>
+        <Suspense fallback={<Spinner/>}>
         <Route path="/home" element={<Homepage />} />
+        {/* <Route path="/" element={<Navigate replace to="/home" />} /> */}
+        <Route path="/" element={<PrivateRoute />}>
         <Route path="/tasktime" element={<Tasktime />} />
         <Route path="/tasks" element={<Tasks />} />
+        <Route path="/live" element={<Live />} />
+        <Route path="/tasks/task/update/:taskId" element={<TaskUpdate />}/>
         <Route path="/tasks/task/new" element={<TaskCreate />} />
-        <Route path="/tasks/task/update/:taskId" element={<TaskUpdate />} />
-        <Route path="/" element={<Navigate replace to="/home" />} />
+        </Route>
         <Route
           path="*"
           element={
@@ -57,6 +78,7 @@ function App() {
             </div>
           }
         />
+      </Suspense>
       </Routes>
     </ThemeProvider>
   );
