@@ -137,7 +137,7 @@ router.post("/register", async (req, res) => {
       password: hashedPassword,
       avatar: avatar,
       phone_number: req.body.email,
-      preferred_com_mode: req.body.preferred_com_mode,
+      
     });
     if (user) {
       return res
