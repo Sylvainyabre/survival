@@ -3,9 +3,13 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
 
+
+
 import Homepage from './Homepage.js';
 import Tasktime from './Tasktime.js';
 import './App.css';
+
+const font =  "font-family: 'Lato', sans-serif";
 
 const theme = createTheme({
   palette: {
@@ -18,7 +22,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Raleway",
+    fontFamily:  font
   },
   components: {
     MuiButton: {
