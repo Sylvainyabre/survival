@@ -44,7 +44,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://backend-production-4240.up.railway.app",
   "devDependencies": {
     "tailwindcss": "^3.2.4"
   }
