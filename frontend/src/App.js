@@ -1,7 +1,7 @@
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-
+import { Routes, Route, Navigate} from "react-router-dom";
 
 
 
@@ -42,7 +42,21 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-        <Homepage></Homepage>
+      <Routes>
+        
+        <Route path="/home" element={<Homepage />} />
+        <Route path="/tasktime" element={<Tasktime />} />
+        <Route path="/" element={<Navigate replace to="/home" />} />
+        <Route
+            path="*"
+            element={
+              <div>
+                <h2>404 Page not found etc</h2>
+              </div>
+            }
+          />
+      </Routes>
+        
     </ThemeProvider>
   );
 }
