@@ -31,7 +31,6 @@ const Register = ({setLogin}) => {
   })
   return (
     <>
-      (
       <Grid
         container
         direction="column"
@@ -111,7 +110,6 @@ const Register = ({setLogin}) => {
           </Typography>
         </Grid>
       </Grid>
-      )
     </>
   );
 };
