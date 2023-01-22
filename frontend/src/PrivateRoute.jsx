@@ -1,10 +1,10 @@
 import React from "react";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
-import { auth } from "../../firebase";
-import Spinner from "../blog/Spinner";
-import { USER } from "../../constants";
+import { Spinner } from 'flowbite-react';
 
-function PrivateRoute({ token, isLoading }) {
+
+function PrivateRoute({isLoading }) {
+  const token = localStorage.getItem("jtwToken")
   const location = useLocation();
   if (isLoading) {
     return (
