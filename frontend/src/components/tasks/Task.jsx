@@ -1,6 +1,7 @@
 import React from "react";
 import { Accordion } from "flowbite-react";
-import {Link from
+import { Link } from "react-router-dom";
+
 const Task = ({ task }) => {
   const handleClick = () => {};
   return (
@@ -16,7 +17,7 @@ const Task = ({ task }) => {
               <span>{task.status}</span>
             </div>
 
-            <Link to={"/tasks/task/${task._id}"}>Update</Link>
+            <Link to={`/tasks/task/${task._id}`}>Update</Link>
           </Accordion.Content>
         </Accordion.Panel>
       </Accordion>
