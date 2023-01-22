@@ -8,6 +8,7 @@ import Paper from '@mui/material/Paper';
 
 import NavBar from './navBar.js';
 import Button from '@mui/material/Button';
+import CheckIcon from '@mui/icons-material/Check';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -101,7 +102,7 @@ const Tasktime = () => {
         <Grid >
             <Grid item xs={12}>
                 <NavBar/>
-                <Item style={{ paddingTop: "10rem", paddingBottom: "10rem",
+                <Item color='inherit' style={{ paddingTop: "10rem", paddingBottom: "10rem",
                  fontWeight: "500", fontSize: "15rem" }}>
                     {timer}
                 </Item>
@@ -114,7 +115,8 @@ const Tasktime = () => {
               alignItems="center"
               spacing={2}
             >
-              <Button style={{fontWeight: "300", fontSize: "2.5rem"}}>
+              <Button variant="outlined" endIcon={<CheckIcon/>}
+              style={{fontWeight: "300", fontSize: "2.5rem"}}>
               Mark as Complete
             </Button>
             </Grid>
