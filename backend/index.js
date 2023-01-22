@@ -9,13 +9,12 @@ const initializePassport = require("./configs/passport");
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 
-
+app.use('/api', createProxyMiddleware({ target: "http://localhost:8000/", changeOrigin: true,secure:false }));
 app.use(methodOverride('_method'))
 app.use(passport.initialize());
 //Passport Initialization
 initializePassport(passport)
-app.use('/api', createProxyMiddleware({ target: "https://backend-production-4240.up.railway.app", changeOrigin: true }));
-app.use(cors());
+app.use(cors({origin:"*"}));
 app.options(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); 

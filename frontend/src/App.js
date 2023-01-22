@@ -10,7 +10,7 @@ import TaskUpdate from "./components/tasks/TaskUpdate";
 import TaskCreate from "./components/tasks/TaskCreate";
 import PrivateRoute from "./PrivateRoute";
 import { Spinner } from 'flowbite-react';
-import {Suspense,createContext} from "react";
+import {Suspense} from "react";
 import jwt_decode from "jwt-decode";
 import Live from "./components/tasks/Live";
 
@@ -50,7 +50,7 @@ if (token) {
   const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {
     
-    window.location.href = "/login";
+    window.location.href = "/home";
   }
 }
 
@@ -59,11 +59,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Suspense fallback={<Spinner/>}>
       <Routes>
-        <Suspense fallback={<Spinner/>}>
         <Route path="/home" element={<Homepage />} />
-        {/* <Route path="/" element={<Navigate replace to="/home" />} /> */}
-        <Route path="/" element={<PrivateRoute />}>
+        <Route path="/" element={<PrivateRoute isLoading={false} />}>
         <Route path="/tasktime" element={<Tasktime />} />
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/live" element={<Live />} />
@@ -78,8 +77,9 @@ function App() {
             </div>
           }
         />
-      </Suspense>
+      
       </Routes>
+      </Suspense>
     </ThemeProvider>
   );
 }

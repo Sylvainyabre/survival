@@ -21,7 +21,7 @@ const Login = () => {
     .then((res)=>{
         setIsSuccess(res?.data?.success)
         console.log(res)
-        if(res?.data.success){
+        if(res?.data?.success){
             setToken(res?.data?.token)
             localStorage.setItem("jwtToken",res?.data?.token)
         }

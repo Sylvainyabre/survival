@@ -25,7 +25,7 @@ export const Stream = () => {
           title={stream?.name}
           playbackId={stream?.playbackId}
           autoPlay
-          muted:false
+          muted={false}
         />
       )}
 
