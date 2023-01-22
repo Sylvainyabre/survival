@@ -38,6 +38,8 @@ if (process.env.NODE_ENV === "development") {
 //Routes
 app.use("/api", require("./routes/index"));
 app.use("/api/auth", require("./routes/auth"));
+app.use("/api/tasks", require("./routes/task"));
+app.use("/api/communication", require("./routes/communication"));
 
 const PORT = process.env.PORT || 8000;
 

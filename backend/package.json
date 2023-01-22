@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
     "avatar": "^0.1.0",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
@@ -22,6 +23,7 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20",
     "passport": "^0.6.0",
-    "passport-jwt": "^4.0.1"
+    "passport-jwt": "^4.0.1",
+    "twilio": "^3.84.1"
   }
 }

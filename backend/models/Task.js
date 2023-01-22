@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const TaskSchema = new mongoose.Schema(
   {
@@ -20,11 +21,11 @@ const TaskSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    startTime: {
+    startDate: {
       type: Date,
       required: true,
     },
-    endTime: [{ type: Date, required: true }],
+    endDate: [{ type: Date, required: true }],
 
     status: {
       type: String,
