@@ -6,18 +6,120 @@ const bcrypt = require("bcrypt");
 const gravatar = require("gravatar");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
+const sgMail = require("@sendgrid/mail");
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 // const validateLoginInput = require("../validation/login");
 // const validateRegistrationInput = require("../validation/register");
 //const   = require("../middleware/auth");
 
 //Loading environment variables
-dotenv.config({ path: "./configs/config.env" }); 
+dotenv.config({ path: "./configs/config.env" });
 
+//@desc : Invite a user
+//@route: POST api/auth/invite/:userId
+//access: Private
+router.post(
+  "/invite/:userId",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const invited_userID = req.params.userId;
+    try {
+      const invitedUser = await User.findById({ _id: invited_userID });
+      if (!invitedUser) {
+        return res.json({ success: false, message: "User not found" });
+      }
+      const emailBody = `
+      Dear ${invitedUser.firstName},
+      ${req.user.firstName} has invited you to be their Survival Guide partner. Follow the link below to accept
+      http://localhost:3000/accept/${req.user._id}
+      `;
+
+      const msg = {
+        to: invitedUser,
+        from: "yabre.tech@gmail.com",
+        subject: "Let's be Study Partners",
+        text: emailBody,
+      };
+      const result = await sgMail
+        .send(msg)
+        .then((res) => {
+          console.log(res);
+
+          return;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+      return res.json({ success: true, result: result });
+    } catch (err) {
+      return res.json({ success: false, message: err.message });
+    }
+  }
+);
+/**
+@DESC accept invitation from a user
+@Access: private
+@POST : /api/auth/accept/:userId
+ */
+router.post(
+  "/accept/:userId",
+  passport.authenticate("jwt", { session: false }),
+  async (req, res) => {
+    const inviterId = req.params.userId;
+    try {
+      const inviter = await User.findById({ _id: inviterId });
+      if (!inviter) {
+        return res.json({ success: false, message: "User not found" });
+      }
+      let inviterPartners = inviter.partners;
+      inviterPartners.push(req.user._id);
+      invitedPartners = req.user.partners;
+      invitedPartners.push(inviter._id);
+      await User.findByIdAndUpdate(
+        { _id: inviterId },
+        { partners: inviterPartners },
+        { new: true }
+      );
+      await User.findByIdAndUpdate(
+        { _id: req.user._id },
+        { partners: invitedPartners },
+        { new: true }
+      );
+
+      const emailBody = `
+      Dear ${inviter.firstName},
+      ${req.user.firstName} has accepted you to be their Survival Guide partner. Happy studies !
+      The Survival Guide Team.
+      `;
+      const msg = {
+        to: inviter,
+        from: "yabre.tech@gmail.com",
+        subject: "Invite Accepted",
+        text: emailBody,
+      };
+      const result = await sgMail
+        .send(msg)
+        .then((res) => {
+          console.log(res);
+
+          return;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+      return res.json({ success: true, result: result });
+    } catch (err) {
+      return res.json({ success: false, message: err.message });
+    }
+  }
+);
 //desc Sign user up
 //@access:Public
 //route:POST api/auth/register
 router.post("/register", async (req, res) => {
-    console.log(res)
+  console.log(res);
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
   const avatar = gravatar.url(req.body.email, {
@@ -97,7 +199,6 @@ router.post("/login", async (req, res) => {
           }
         );
       } else {
-
         return res
           .status(404)
           .json({ success: false, message: "Password incorrect." });
@@ -118,7 +219,6 @@ router.delete("/logout", (req, res) => {
   } catch (error) {
     return res.json({ success: false, message: error.message });
   }
-
 });
 
 //get current user
@@ -181,7 +281,7 @@ router.delete(
   }
 );
 
-//get all users
+// invite partner
 //@router POST api/auth/password/reset
 //access:Private
 
