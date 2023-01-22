@@ -14,8 +14,8 @@ const font = "font-family: 'Lato', sans-serif";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#665cff",
-      dark: "#7200e4",
+      main: "#b1acff",
+      dark: "#918bff",
     },
     background: {
       default: "#f3f6f4",

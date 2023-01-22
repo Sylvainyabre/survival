@@ -48,14 +48,16 @@ return (
             <img
               src={journal}
               alt="head logo"
-              style={{ width: "600px", height: "600px", marginTop: "100px" }}
+              style={{ width: "600px", height: "600px", marginTop: "90px" }}
             />
-            <Box mt={10} mr={10} ml={10}>
+            <Box mt={9} mr={10} ml={10}>
               <Typography
                 align="center"
-                style={{ fontSize: "3rem", marginTop: "20px", color: "white" }}
+                style={{ fontWeight: "bold", fontSize: "2rem", color: "white" }}
               >
-                Something something Survival Guide.
+                Share tasks<br/>
+                Stay accountable<br/>
+                Succeed together
               </Typography>
             </Box>
           </Grid>
@@ -78,7 +80,7 @@ return (
               </Grid>
               <Grid item xs={12} style={{ paddingTop: "10rem" }}>
                 <Typography style={{ fontWeight: "500", fontSize: "1.5rem" }}>
-                  Welcome to Survival Guide
+                  Ready to get things done?
                 </Typography>
               </Grid>
               <Grid item xs={12}>
