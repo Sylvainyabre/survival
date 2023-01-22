@@ -3,7 +3,6 @@ import { Accordion } from "flowbite-react";
 import { Link } from "react-router-dom";
 
 const Task = ({ task }) => {
-  const handleClick = () => {};
   return (
     <>
       <Accordion alwaysOpen={true}>
@@ -16,7 +15,7 @@ const Task = ({ task }) => {
               </p>
               <span>{task.status}</span>
             </div>
-            <Link to={`/tasks/task/${task._id}`}>Update</Link>
+            <Link to={`/tasks/task/update/${task._id}`}>Update</Link>
           </Accordion.Content>
         </Accordion.Panel>
       </Accordion>
