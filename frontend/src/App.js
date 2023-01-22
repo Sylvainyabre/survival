@@ -9,6 +9,7 @@ import Homepage from "./components/home/Homepage";
 import TaskUpdate from "./components/tasks/TaskUpdate";
 import TaskCreate from "./components/tasks/TaskCreate";
 
+
 const font = "font-family: 'Lato', sans-serif";
 
 const theme = createTheme({
@@ -37,6 +38,7 @@ const theme = createTheme({
 });
 
 function App() {
+ 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

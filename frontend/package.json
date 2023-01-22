@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@livepeer/react": "^2.1.0",
     "@mui/material": "^5.11.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -42,6 +43,7 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "https://backend-production-4240.up.railway.app",
   "devDependencies": {
     "tailwindcss": "^3.2.4"
   }
