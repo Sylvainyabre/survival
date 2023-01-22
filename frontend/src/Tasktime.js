@@ -6,6 +6,9 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
+import NavBar from './navBar.js';
+import Button from '@mui/material/Button';
+
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -95,19 +98,31 @@ const Tasktime = () => {
       
 
     return (
-        <Grid container spacing={2}>
+        <Grid >
             <Grid item xs={12}>
-                {timer}
+                <NavBar/>
+                <Item style={{ paddingTop: "10rem", paddingBottom: "10rem",
+                 fontWeight: "500", fontSize: "15rem" }}>
+                    {timer}
+                </Item>
             </Grid>
-            <Grid item xs={4}>
-                <Item></Item>
-                
+            <div/>
+            <Grid style={{ paddingTop: "2rem"}}
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              spacing={2}
+            >
+              <Button style={{fontWeight: "300", fontSize: "2.5rem"}}>
+              Mark as Complete
+            </Button>
             </Grid>
             
         </Grid>
         
-        
 
+        
     );
 };
     
