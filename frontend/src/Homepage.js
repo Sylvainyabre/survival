@@ -35,7 +35,7 @@ return (
       <Grid item xs={6}>
         <Box
           sx={{
-            height: "100vh",
+            height: "120vh",
             backgroundColor: "primary.main",
           }}
         >
@@ -125,6 +125,7 @@ return (
                   </Button>
                 </Typography>
               </Grid>
+
             </Grid>
             ) : (   
             <Grid
@@ -139,11 +140,7 @@ return (
                   Create an Account
                 </Typography>
               </Grid>
-              <Grid item xs={12} style={{ paddingTop: "10rem" }}>
-                <Typography style={{ fontWeight: "500", fontSize: "1rem" }}>
-                  Create an account to start sending your mental ratings
-                </Typography>
-              </Grid>
+  
               <Grid item xs={12}>
                 <TextField
                   id="firstName"
@@ -218,7 +215,8 @@ return (
                     Log In
                   </Button>
                 </Typography>
-              </Grid>
+              </Grid> 
+
             </Grid>
             )}
         </Box>
