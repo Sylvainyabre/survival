@@ -97,7 +97,7 @@ const Tasktime = () => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={12}>
-                <Item>{timer}</Item>
+                {timer}
             </Grid>
             <Grid item xs={4}>
                 <Item></Item>
