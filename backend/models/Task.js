@@ -23,17 +23,19 @@ const TaskSchema = new mongoose.Schema(
     },
     startDate: {
       type: Date,
-      required: true,
+      required: false,
     },
-    endDate: [{ type: Date, required: true }],
+    endDate: { type: Date, required: false },
 
     status: {
       type: String,
       default: "created",
-      enum: ["created", "inprogress", "complete"],
+      enum: ["created", "inprogress", "completed"],
     },
-    deadline: {
-      type: Date,
+    doOnDay: {
+      type: String,
+      required:true
+
     },
     owner: {
       type: Schema.Types.ObjectId,

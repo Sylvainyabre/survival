@@ -56,7 +56,7 @@ router.post(
       title: req.body.title,
       description: req.body.description,
       owner: req.user._id,
-      deadline: req.body.deadline,
+      doOnDay: req.body.doOnDay,
       startDate: req.body.startDate,
       endDate: req.body.endDate,
       category: req.body.category,
