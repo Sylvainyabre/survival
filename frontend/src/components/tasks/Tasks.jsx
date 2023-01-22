@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Task from "./Task";
 import { Spinner,Select } from "flowbite-react";
 import { Link } from "react-router-dom";
+import NavBar from "../../navBar";
 
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -27,15 +28,18 @@ const Tasks = () => {
   },[day,tasks])
   const displayTasks = tasks.map((task) => <Task task={task} key={task._id} />);
   return (
+    <div><NavBar></NavBar>
     <div className={"mt-5 relative w-11/12 m-auto block text-center"}>
+      
       <Link
         className={
           "w-40 h-12 m-auto text-white bg-blue-800 rounded-xl relative font-sans mb-4 block text-center pt-3"
         }
         to={"/tasks/task/new"}
       >
-        +ADD ARTICLE
+        +New Task
       </Link>
+      
          <div id="select">
             <Select
               id="doOnDay"
@@ -53,6 +57,7 @@ const Tasks = () => {
           </div>
       <hr />
       {isLoading ? <Spinner /> : displayTasks}
+    </div>
     </div>
   );
 };

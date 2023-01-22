@@ -6,6 +6,7 @@ import Tasktime from "./Tasktime.js";
 import "./App.css";
 import Tasks from "./components/tasks/Tasks";
 import Homepage from "./components/home/Homepage";
+import Profile from "./components/home/Profile";
 import TaskUpdate from "./components/tasks/TaskUpdate";
 import TaskCreate from "./components/tasks/TaskCreate";
 
@@ -46,6 +47,7 @@ function App() {
         <Route path="/home" element={<Homepage />} />
         <Route path="/tasktime" element={<Tasktime />} />
         <Route path="/tasks" element={<Tasks />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/tasks/task/new" element={<TaskCreate />} />
         <Route path="/tasks/task/update/:taskId" element={<TaskUpdate />} />
         <Route path="/" element={<Navigate replace to="/home" />} />
