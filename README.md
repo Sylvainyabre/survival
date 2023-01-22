@@ -30,7 +30,12 @@
    - *subjects* : the subjects that the user is taking this term
    - *partners* : a ref to a user, the study partner of this user
 
+## Drew doesnt forget
 
+   - click go on the task brings you to a new page
+   - clock/timer 
+   - chatbox with other people who are in a task as wel
+   - nice message/photo
 
 
 
