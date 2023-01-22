@@ -23,6 +23,7 @@ const Login = () => {
         console.log(res)
         if(res?.data.success){
             setToken(res?.data?.token)
+            localStorage.setItem("jwtToken",res?.data?.token)
         }
         setIsLoading(false)
     })

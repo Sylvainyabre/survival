@@ -6,6 +6,7 @@ const passport = require("passport");
 const initDBConnection = require("./configs/database.js");
 const methodOverride = require('method-override');
 const initializePassport = require("./configs/passport");
+const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 
 
@@ -13,7 +14,7 @@ app.use(methodOverride('_method'))
 app.use(passport.initialize());
 //Passport Initialization
 initializePassport(passport)
-
+app.use('/api', createProxyMiddleware({ target: "https://backend-production-4240.up.railway.app", changeOrigin: true }));
 app.use(cors());
 app.options(cors());
 app.use(express.json());
