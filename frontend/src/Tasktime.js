@@ -16,7 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 
-const Homepage = () => {
+const Tasktime = () => {
     function secondsUntilMidnight(){
         var midnight = new Date();
         midnight.setHours(24);
@@ -97,7 +97,7 @@ const Homepage = () => {
     return (
         <Grid container spacing={2}>
             <Grid item xs={12}>
-                <Item>{timer}</Item>
+                {timer}
             </Grid>
             <Grid item xs={4}>
                 <Item></Item>
@@ -111,4 +111,4 @@ const Homepage = () => {
     );
 };
     
-export default Homepage;
+export default Tasktime;

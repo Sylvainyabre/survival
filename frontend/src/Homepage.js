@@ -13,7 +13,23 @@ import Select from "@mui/material/Select";
 import journal from "./image1.png";
 
 const Homepage = () => {
+    const [login, setLogin] = useState(true);
+    const [values, setValues] = useState({
+        email: "",
+        password: "",
+    });
+    const [account, setAccount] = useState({
+        firstName: "",
+        lastName: "",
+        role: "",
+        email: "",
+        password: "",
+    });
+    const [error, setError] = useState("");
 
+
+
+    
 return (
     <Grid container direction="row">
       <Grid item xs={6}>
@@ -47,7 +63,7 @@ return (
       </Grid>
       <Grid item xs={6}>
         <Box mt={30} mr={10} ml={10}>
-          
+        {login ? (
             <Grid
               container
               direction="column"
@@ -70,9 +86,9 @@ return (
                   id="email"
                   label="Email"
                   variant="standard"
-                  //onChange={(e) =>
-                  //  setValues({ ...values, email: e.target.value })
-                  //}
+                  onChange={(e) =>
+                    setValues({ ...values, email: e.target.value })
+                  }
                 />
               </Grid>
               <Grid item xs={12}>
@@ -81,11 +97,11 @@ return (
                   label="Password"
                   variant="standard"
                   type="password"
-                  //onChange={(e) =>
-                  //  setValues({ ...values, password: e.target.value })
-                  //}
-                  //error={error}
-                  //helperText={error ? "Login Failed!" : " "}
+                  onChange={(e) =>
+                    setValues({ ...values, password: e.target.value })
+                  }
+                  error={error}
+                  helperText={error ? "Login Failed!" : " "}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -103,14 +119,14 @@ return (
                   <Button
                     variant="text"
                     style={{ textDecorationLine: "underline" }}
-                    //onClick={() => setLogin(false)}
+                    onClick={() => setLogin(false)}
                   >
                     Create Account
                   </Button>
                 </Typography>
               </Grid>
             </Grid>
-          
+            ) : (   
             <Grid
               container
               direction="column"
@@ -148,27 +164,21 @@ return (
                   //}
                 />
               </Grid>
-              <Grid item xs={12}>
-                <FormControl>
-                  <InputLabel id="demo-simple-select-label">Role</InputLabel>
-                  <Select
-                    id="role"
-                    //value={account.role}
-                    label="Role"
-                    //onChange={(e) =>
-                    //  setAccount({ ...account, role: e.target.value })
-                    //}
-                    fullWidth
-                  >
-                    <MenuItem value="student">Student</MenuItem>
-                    <MenuItem value="professor">Professor</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
+              
               <Grid item xs={12}>
                 <TextField
                   id="email"
                   label="Email"
+                  variant="standard"
+                  //onChange={(e) =>
+                  //  setAccount({ ...account, email: e.target.value })
+                  //}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="phone"
+                  label="Phone Number"
                   variant="standard"
                   //onChange={(e) =>
                   //  setAccount({ ...account, email: e.target.value })
@@ -203,14 +213,14 @@ return (
                   <Button
                     variant="text"
                     style={{ textDecorationLine: "underline" }}
-                    //onClick={() => setLogin(true)}
+                    onClick={() => setLogin(true)}
                   >
                     Log In
                   </Button>
                 </Typography>
               </Grid>
             </Grid>
-          
+            )}
         </Box>
       </Grid>
     </Grid>
