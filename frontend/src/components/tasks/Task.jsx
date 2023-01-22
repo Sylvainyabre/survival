@@ -16,7 +16,6 @@ const Task = ({ task }) => {
               </p>
               <span>{task.status}</span>
             </div>
-
             <Link to={`/tasks/task/${task._id}`}>Update</Link>
           </Accordion.Content>
         </Accordion.Panel>
