@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -11,26 +10,33 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 import journal from "./image1.png";
+import { RegisterUser, userLogin } from "../../api/auth";
+import Register from "./Register";
+import Login from './Login';
 
 const Homepage = () => {
-    const [login, setLogin] = useState(true);
-    const [values, setValues] = useState({
-        email: "",
-        password: "",
-    });
-    const [account, setAccount] = useState({
-        firstName: "",
-        lastName: "",
-        role: "",
-        email: "",
-        password: "",
-    });
-    const [error, setError] = useState("");
+  const [login, setLogin] = useState(true);
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [email1, setEmail1] = useState("");
+  const [password1, setPassword1] = useState("");
+  const [first, setFirst] = useState("");
+  const [last, setLast] = useState("");
+  const [phoneNum, setPhoneNum] = useState("");
+  const [comMode, setComeMode] = useState("");
+  
 
 
-
-    
-return (
+  const handleLogin = ()=>{
+    userLogin({email:email,password:password})
+    .then((res)=>console.log(res))
+  }
+ 
+  return (
     <Grid container direction="row">
       <Grid item xs={6}>
         <Box
@@ -63,7 +69,7 @@ return (
       </Grid>
       <Grid item xs={6}>
         <Box mt={30} mr={10} ml={10}>
-        {login ? (
+          {login ? (
             <Grid
               container
               direction="column"
@@ -81,38 +87,7 @@ return (
                   Welcome to Survival Guide
                 </Typography>
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  id="email"
-                  label="Email"
-                  variant="standard"
-                  onChange={(e) =>
-                    setValues({ ...values, email: e.target.value })
-                  }
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  id="password"
-                  label="Password"
-                  variant="standard"
-                  type="password"
-                  onChange={(e) =>
-                    setValues({ ...values, password: e.target.value })
-                  }
-                  error={error}
-                  helperText={error ? "Login Failed!" : " "}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Button
-                  fullWidth
-                  variant="contained"
-                  //onClick={() => sendLogin(values.email, values.password)}
-                >
-                  Sign In
-                </Button>
-              </Grid>
+              < Login/>
               <Grid item xs={12} style={{ paddingTop: "10rem" }}>
                 <Typography style={{ fontSize: "1rem" }}>
                   New to Survival Guide?
@@ -125,100 +100,8 @@ return (
                   </Button>
                 </Typography>
               </Grid>
-
             </Grid>
-            ) : (   
-            <Grid
-              container
-              direction="column"
-              justifyContent="center"
-              alignItems="center"
-              spacing={2}
-            >
-              <Grid item xs={12}>
-                <Typography style={{ fontWeight: "bold", fontSize: "3rem" }}>
-                  Create an Account
-                </Typography>
-              </Grid>
-  
-              <Grid item xs={12}>
-                <TextField
-                  id="firstName"
-                  label="First Name"
-                  variant="standard"
-                  //onChange={(e) =>
-                  //  setAccount({ ...account, firstName: e.target.value })
-                  //}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  id="lastName"
-                  label="Last Name"
-                  variant="standard"
-                  //onChange={(e) =>
-                  //  setAccount({ ...account, lastName: e.target.value })
-                  //}
-                />
-              </Grid>
-              
-              <Grid item xs={12}>
-                <TextField
-                  id="email"
-                  label="Email"
-                  variant="standard"
-                  //onChange={(e) =>
-                  //  setAccount({ ...account, email: e.target.value })
-                  //}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  id="phone"
-                  label="Phone Number"
-                  variant="standard"
-                  //onChange={(e) =>
-                  //  setAccount({ ...account, email: e.target.value })
-                  //}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  id="password"
-                  label="Password"
-                  variant="standard"
-                  type="password"
-                  //onChange={(e) =>
-                  //  setAccount({ ...account, password: e.target.value })
-                  //}
-                  //error={error}
-                  //helperText={error ? "Sign Up Failed!" : " "}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Button
-                  fullWidth
-                  variant="contained"
-                  //onClick={() => createUser(account.email, account.password)}
-                >
-                  Sign Up
-                </Button>
-              </Grid>
-              <Grid item xs={12} style={{ paddingTop: "10rem" }}>
-                <Typography style={{ fontSize: "1rem" }}>
-                  Have an Account?
-                  <Button
-                    variant="text"
-                    style={{ textDecorationLine: "underline" }}
-                    onClick={() => setLogin(true)}
-                  >
-                    Log In
-                  </Button>
-                </Typography>
-              </Grid> 
-
-            </Grid>
-            )}
+          ) : <Register setLogin={setLogin}/>}
         </Box>
       </Grid>
     </Grid>
