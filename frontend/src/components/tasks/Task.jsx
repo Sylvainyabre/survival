@@ -13,6 +13,9 @@ const Task = ({ task }) => {
   const handleSend  =()=>{
 
   }
+  const handleDelete = ()=>{
+    
+  }
   return (
     <>
       <Accordion alwaysOpen={true}>
@@ -30,6 +33,7 @@ const Task = ({ task }) => {
                  <Link to={`/tasks/task/update/${task._id}`}>Update Task</Link>
                  <Button onClick={()=>setShowTextBox(true)}>Text Partner</Button>
                  <Button onClick={()=>setShowLive(true)}>Start Live</Button>
+                <Button onClick={()=>handleDelete()}>Start Live</Button>
               </div>
           
              
