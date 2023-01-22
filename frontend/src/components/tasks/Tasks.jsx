@@ -6,7 +6,7 @@ import NavBar from "../../navBar";
 
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [day,setDay] = useState("None")
   useEffect(() => {
     fetch("/api/tasks/all")
@@ -25,10 +25,10 @@ const Tasks = () => {
     let dayTasks = tasks?.filter((task)=> task.doOnDay===day)
     setTasks(dayTasks)
 
-  },[day,tasks])
+  },[day])
   const displayTasks = tasks.map((task) => <Task task={task} key={task._id} />);
   return (
-    <div><NavBar></NavBar>
+    <div>
     <div className={"mt-5 relative w-11/12 m-auto block text-center"}>
       
       <Link

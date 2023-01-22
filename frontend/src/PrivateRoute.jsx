@@ -3,8 +3,9 @@ import { useLocation, Navigate, Outlet } from "react-router-dom";
 import { Spinner } from 'flowbite-react';
 
 
-function PrivateRoute({isLoading }) {
-  const token = localStorage.getItem("jtwToken")
+function PrivateRoute({token,isLoading }) {
+  //const token = localStorage.getItem("jtwToken")
+  console.log(token)
   const location = useLocation();
   if (isLoading) {
     return (
@@ -17,7 +18,7 @@ function PrivateRoute({isLoading }) {
   return token ? (
     <Outlet />
   ) : (
-    <Navigate to={"/login"} state={{ prev: location.pathname }} />
+    <Navigate to={"/home"} state={{ prev: location.pathname }} />
   );
 }
 

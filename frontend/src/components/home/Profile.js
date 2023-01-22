@@ -12,7 +12,7 @@ const Profile = () => {
     
     return(
         <div>
-        <NavBar />
+        
         {userData ? (
             <Box mt={10}>
                 <Grid container direction="column" spacing={2} >

@@ -9,7 +9,7 @@ const initializePassport = require("./configs/passport");
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 
-app.use('/api', createProxyMiddleware({ target: "http://localhost:8000/", changeOrigin: true,secure:false }));
+//app.use('/api', createProxyMiddleware({ target: "http://localhost:8000/", changeOrigin: true,secure:false }));
 app.use(methodOverride('_method'))
 app.use(passport.initialize());
 //Passport Initialization

@@ -17,6 +17,7 @@ const Login = () => {
   const [isLoading,setIsLoading] = useState(true)
   const navigate = useNavigate()
   const handleLogin = ()=>{
+    console.log(password)
     userLogin({email:email,password:password})
     .then((res)=>{
         setIsSuccess(res?.data?.success)
@@ -24,15 +25,18 @@ const Login = () => {
         if(res?.data?.success){
             setToken(res?.data?.token)
             localStorage.setItem("jwtToken",res?.data?.token)
+            setIsLoading(false)
+            navigate("/tasks")
         }
-        setIsLoading(false)
+        
     })
   }
-  useEffect(()=>{
-    if(isSuccess){
-        navigate("/home")
-    }
-  })
+  // useEffect(()=>{
+  //   if(isSuccess){
+  //       navigate("/tasks")
+  //   }
+  // })
+  
   return (
     <>
       {isLoading?(<Box ><Grid item xs={12}>
